@@ -1,0 +1,5 @@
+Podaj kod z aplikacji
+<%= form_tag user_mfa_session_path, method: 'post' do %>
+    <%= text_field_tag :mfa_code, params[:mfa_code] %>
+    <%= submit_tag "Send", :name => nil %>
+  <% end %>

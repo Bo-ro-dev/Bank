@@ -1,0 +1,19 @@
+<div class="container">
+
+  <%= form_tag operations_path, method: 'get' do %>
+    <%= text_field_tag :search_account, params[:search_account] %>
+    <%= date_field_tag :search_date_from, params[:search_date_from] %>
+    <%= date_field_tag :search_date_to, params[:search_date_to] %>
+    <%= submit_tag "Search", :name => nil %>
+  <% end %>
+
+  <div class="px-5" id="operations_history">
+    <% @operations.each do |operation| %>
+      <% if current_user.account == operation.sender %>
+        <%= render 'outcoming_operation', operation: operation %>
+      <% else %>
+        <%= render 'incoming_operation', operation: operation %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

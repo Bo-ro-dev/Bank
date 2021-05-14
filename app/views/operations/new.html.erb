@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="border p-4 my-3 border-3 rounded border-primary">
+    <h3> Wyślij przelew: </h3>
+    <%= form_with url: "/operations", method: :post do |form| %>
+      <%= form.hidden_field :sender_id, value: @account.account_number %>
+      <%= form.label :receiver_id, "Numer konta odbiorcy:  +48"%>
+      <%= form.text_field :receiver_id, size: "9x1", value: @receiver_number %>
+      <%= form.label :amount, "kwota:"%>
+      <%= form.text_field :amount, size: "6x1", value: @amount %>
+      <%= form.label :title, "tytuł:"%>
+      <%= form.text_area :title, size: "9x1" %>
+      <%= form.submit "Przelej pieniądze" %>
+    <% end%>
+  </div>
+</div>

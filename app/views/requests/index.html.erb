@@ -1,0 +1,12 @@
+
+  <div class="container">
+    <div class="px-5" id="requests">
+      <% @requests.reverse.each do |request| %>
+        <% if current_user.account.account_number == request.requester.account_number  %>
+          <%= render 'outcoming_request', request: request %>
+        <% else %>
+          <%= render 'incoming_request', request: request %>
+        <% end %>
+      <% end %>
+    </div>
+</div>

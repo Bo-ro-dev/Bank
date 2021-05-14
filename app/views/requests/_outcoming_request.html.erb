@@ -1,0 +1,26 @@
+<div class="row my-2 p-2 rounded border border-3 border-secondary bg-light align-items-center">
+  <div class="col-md-2 col-6">
+    <div><p class="fw-lighter">Wysłano: </p></div>
+    <div><%= request.created_at.strftime("%d/%m/%Y") %></div>
+  </div>
+  <div class="col-md-2 col-6">
+    <div><p class="fw-lighter">Odbiorca: </p></div>
+    <div><%= request.target.account_number  %></div>
+  </div>
+  <div class="col-md-5 col-6">
+      <div><p class="fw-lighter">Tytuł: </p> </div>
+    <div><%= request.name %></div>
+  </div>
+    <div class="col-md-1 col-6">
+    <div><p class="fw-lighter">Kwota: </p></div>
+    <div><%= request.amount %></div>
+  </div>
+
+  <div class="col-md-2 col-2">
+    <div class="float-end">
+
+        <%= link_to "Usuń", request_path(request), method: :delete, class: "btn btn-danger" %>
+
+    </div>
+  </div>
+</div>

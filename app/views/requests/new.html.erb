@@ -1,0 +1,17 @@
+
+  <div class="container">
+    <div class="border p-4 my-3 border-3 rounded border-secondary">
+      <h3>Wyślij prośbę o przelew:</h3>
+      <%= form_with model: @request, method: :post, local: true do |form| %>
+        <%= form.label :target_id, "Numer konta odbiorcy:  +48"%>
+        <%= form.text_field :target_id, size: "9x1" %>
+        <%= form.label :amount, "   kwota:"%>
+        <%= form.text_field :amount, size: "6x1" %>
+        <p>
+        <%= form.label :name, "Tytuł: "%>
+        <%= form.text_area :name, size: "30x3" %>
+        </p>
+        <%= form.submit "Wyślij" %>
+      <% end %>
+      </div>
+    </div>

@@ -1,0 +1,22 @@
+<h1>Dokończ tworzenie konta</h1>
+
+</br>
+<%= form_with(model: account, local: true, method: :post) do |form| %>
+  <div class="field">
+    <%= form.label :account_number,  "Numer telefonu: +48"%>
+    <%= form.text_field :account_number  %>
+    </br>
+    <%= form.label :first_name,  "Imię: "%>
+    <%= form.text_field :first_name  %>
+    </br>
+    <%= form.label :last_name,  "Nazwisko: "%>
+    <%= form.text_field :last_name  %>
+  </div>
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>

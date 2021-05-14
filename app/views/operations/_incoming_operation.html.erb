@@ -1,0 +1,30 @@
+<div class="row my-2 p-2 rounded border border-3 border-success bg-light">
+  <div class="col-md-2 col-6">
+    <div> <p class="fw-lighter">Odebrano: </p> </div>
+    <div><%= operation.created_at.strftime("%d/%m/%Y") %></div>
+  </div>
+  <div class="col-md-2 col-6">
+    <div><p class="fw-lighter">Nadawca: </p></div>
+    <div><%= operation.sender.account_number %></div>
+  </div>
+  <div class="col-md-1 col-5">
+    <div><p class="fw-lighter">Saldo: </p> </div>
+    <div><%= operation.balance_after_operation %></div>
+  </div>
+  <div class="col-md-5 col-6">
+    <div><p class="fw-lighter">Tytuł: </p> </div>
+    <div><%= operation.title %></div>
+  </div>
+  <div class="col-md-1 col-6">
+    <div><p class="fw-lighter">Kwota: </p> </div>
+    <div><%= operation.amount %></div>
+  </div>
+  <div class="col-md-1 col-1">
+    <div class="dropdown float-end">
+      <button class="btn btn-secondary dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><%= link_to "Zwróć środki", new_operation_path(receiver: operation.sender.account_number, amount: operation.amount),  class: "dropdown-item" %></li>
+      </ul>
+    </div>
+  </div>
+</div>

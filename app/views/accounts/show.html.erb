@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="jumbotron">
+    <div class="row border p-4 rounded border-4 border-primary bg-light">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+          <h3 class="fw-light">Numer konta:</h3>
+          <p class=" fs-2"><%= @account.account_number %></p>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+          <h3 class="fw-light">Dostępne środki:</h3>
+          <p class=" fs-2 "> <%= @account.balance %> zł</p>
+      </div>
+    </div>
+  </div>
+
+    <br>
+
+  <div class="row px-5">
+    <div class="col-6">
+      <a class="btn btn-dark btn-lg float-end" href="/operations" role="button">Wszystkie operacje</a>
+    </div>
+    <div class="col-6 ">
+      <a class="btn btn-dark btn-lg float-start d-inline" href="/requests" role="button">
+        Prośby o przelew
+        <% if current_user.account.incoming_requests.count < 0 %>
+        <span class="badge bg-warning"> <%= current_user.account.incoming_requests.count %></span>
+        <% else%>
+        <% end %>
+
+      </a>
+    </div>
+  </div>
+  <div class="px-5">
+    <h4>Ostatnie operacje: </h1>
+  </div>
+  <div class="px-5" id="operations_history">
+    <% @latest_operations.each do |operation| %>
+      <% if current_user.account.account_number == operation.sender.account_number %>
+          <div class="row my-2 p-2 rounded border border-3 border-danger bg-light position-relative ">
+           <a class="stretched-link" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"></a>
+            <div class="col-md-2 col-6">
+              <div><p class="fw-lighter">Wysłano: </p></div>
+              <div><%= operation.created_at.strftime("%d/%m/%Y") %></div>
+            </div>
+            <div class="col-md-2 col-6">
+                <div><p class="fw-lighter">Odbiorca: </p></div>
+                <div><p><%= operation.receiver.account_number %></p></div>
+            </div>
+            <div class="col-md-5 col-6">
+              <div><p class="fw-lighter">Tytuł: </p> </div>
+              <div><%= operation.title %></div>
+            </div>
+            <div class="col-md-2 col-6">
+              <div><p class="fw-lighter">Saldo: </p> </div>
+              <div><%= operation.balance_after_operation %></div>
+            </div>
+            <div class="col-md-1 col-6">
+              <div><p class="fw-lighter">Kwota: </p></div>
+              <div><%= operation.amount %></div>
+            </div>
+          </div>
+      <% else %>
+        <div class="row my-2 p-2 rounded border border-3 border-success bg-light position-relative ">
+
+          <div class="col-md-2 col-6">
+            <div> <p class="fw-lighter">Odebrano: </p> </div>
+            <div><%= operation.created_at.strftime("%d/%m/%Y") %></div>
+          </div>
+          <div class="col-md-2 col-6">
+            <div><p class="fw-lighter">Nadawca: </p></div>
+            <div><%= operation.sender.account_number %></div>
+          </div>
+          <div class="col-md-5 col-6">
+            <div><p class="fw-lighter">Tytuł: </p> </div>
+            <div><%= operation.title %></div>
+          </div>
+          <div class="col-md-2 col-6">
+            <div><p class="fw-lighter">Saldo: </p> </div>
+            <div><%= operation.balance_after_operation %></div>
+          </div>
+          <div class="col-md-1 col-6">
+            <div><p class="fw-lighter">Kwota: </p> </div>
+            <div><%= operation.amount %></div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
