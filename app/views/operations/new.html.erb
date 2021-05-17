@@ -9,7 +9,7 @@
       <%= form.text_field :amount, size: "6x1", value: @amount %>
       <%= form.label :title, "tytuł:"%>
       <%= form.text_area :title, size: "9x1" %>
-      <%= form.submit "Przelej pieniądze" %>
+      <%= form.submit "Przelej pieniądze", data: { confirm: 'Potwierdź wykonanie przelewu' }%>
     <% end%>
   </div>
 </div>

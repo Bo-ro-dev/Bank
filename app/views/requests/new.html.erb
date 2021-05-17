@@ -11,7 +11,7 @@
         <%= form.label :name, "Tytuł: "%>
         <%= form.text_area :name, size: "30x3" %>
         </p>
-        <%= form.submit "Wyślij" %>
+        <%= form.submit "Wyślij", data: { confirm: 'Potwierdź wysłanie zapytania' } %>
       <% end %>
       </div>
     </div>

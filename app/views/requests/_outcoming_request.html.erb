@@ -19,7 +19,7 @@
   <div class="col-md-2 col-2">
     <div class="float-end">
 
-        <%= link_to "Usuń", request_path(request), method: :delete, class: "btn btn-danger" %>
+        <%= link_to "Anuluj", request_path(request), method: :delete, data: { confirm: 'Anulować zapytanie?' } , class: "btn btn-danger" %>
 
     </div>
   </div>
