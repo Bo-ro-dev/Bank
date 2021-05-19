@@ -14,12 +14,9 @@
 #
 class User < ApplicationRecord
   acts_as_google_authenticated
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  after_create :set_google_secret
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  after_create :set_google_secret
 
   has_one :account
 end

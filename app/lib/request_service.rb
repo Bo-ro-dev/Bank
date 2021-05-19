@@ -4,12 +4,10 @@ class RequestService
   end
 
   def self.cancel_request(request)
-    #request = Request.find(request_id)
     request.destroy!
   end
 
   def self.reject_request(request)
-    #request = Request.find(request_id)
     request.destroy!
   end
 

@@ -12,8 +12,6 @@
 #  title                   :string
 #
 class Operation < ApplicationRecord
-  #validates :amount, :inclusion => 1..Account.find_by(user_id: @current_user.id).balance
-
   belongs_to :sender, class_name: 'Account'
   belongs_to :receiver, class_name: 'Account'
 

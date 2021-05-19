@@ -12,7 +12,6 @@
 #  last_name      :string
 #
 class Account < ApplicationRecord
-  #before_validates {self.account_number = email.downcase}
   validates :balance, :user_id, :account_number, :first_name, :last_name, presence: true
   validates :account_number, :user_id, uniqueness: true
   validates :account_number, length: { is: 9 }
