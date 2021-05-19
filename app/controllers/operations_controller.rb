@@ -1,20 +1,24 @@
 class OperationsController < ApplicationController
 
   def create
-    sender = current_user.account
-    receiver = Account.find_by!(account_number: params[:receiver_id])
-    if params[:title].empty?
-      title = "Przelew środków"
+    if current_user.google_authentic?(params[:google_token])
+      sender = current_user.account
+      receiver = Account.find_by!(account_number: params[:receiver_id])
+      if params[:title].empty?
+        title = "Przelew środków"
+      else
+        title = params[:title]
+      end
+
+      ActiveRecord::Base.transaction do
+        OperationService.new(sender, receiver, params[:amount].to_i, title).transfer
+      end
+
+      redirect_to root_path, notice: "Wysłano środki"
     else
-      title = params[:title]
+      flash[:notice] = "Nieprawidłowy token"
     end
-    ActiveRecord::Base.transaction do
-      OperationService.new(sender, receiver, params[:amount].to_i, title).transfer
-    end
-
-
-    redirect_to root_path, notice: "Wysłano środki"
-    rescue OperationService::NotEnoughFundsError
+  rescue OperationService::NotEnoughFundsError
       redirect_to :root, notice: "Niewystarczająca ilość środków na koncie"
   end
 
@@ -39,6 +43,7 @@ class OperationsController < ApplicationController
     @account = current_user.account
     @receiver_number = params[:receiver]
     @amount = params[:amount]
+
   end
 
   private

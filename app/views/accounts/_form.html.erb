@@ -13,8 +13,16 @@
     <%= form.text_field :last_name  %>
   </div>
 
+  <br>
+ <p>Zeskanuj kod aplikacją Google Authenticator lub przepisz kod</p>
+  <%= image_tag(@qr) %>
+  <%= current_user.google_secret %>
 
-
+  <p>Przepisz token weryfikacji z aplikacji Googla Authenticator aby dokończyć tworzenie konta</p>
+  <%= form.label :google_token,  "token: "%>
+  <%= form.text_field :google_token  %>
+  <br>
+  <br>
   <div class="actions">
     <%= form.submit %>
   </div>
