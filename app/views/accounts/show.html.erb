@@ -1,13 +1,14 @@
 <div class="container">
   <div class="jumbotron">
-    <div class="row border p-4 rounded border-4 border-primary bg-light">
-      <div class="col-lg-6 col-md-6 col-sm-6">
-          <h3 class="fw-light">Numer konta:</h3>
-          <p class=" fs-2"><%= @account.account_number %></p>
+    <div class="row border p-3 rounded border-4 border-secondary bg-light">
+      <div class="col-lg-6 col-md-6 col-sm-6 px-5">
+          <p class="fw-lighter fs-7 m-0">Numer konta:</p>
+          <p class="m-0 fs-5 pt-0 pb-4"><%= @account.account_number %></p>
+          <p class="fw-lighter m-0">Dostępne środki:</p>
+          <p class=" fs-2 m-0"> <%= @account.balance %> zł</p>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6">
-          <h3 class="fw-light">Dostępne środki:</h3>
-          <p class=" fs-2 "> <%= @account.balance %> zł</p>
+
       </div>
     </div>
   </div>

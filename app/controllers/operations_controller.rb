@@ -4,15 +4,11 @@ class OperationsController < ApplicationController
     if current_user.google_authentic?(params[:google_token])
       sender = current_user.account
       receiver = Account.find_by!(account_number: params[:receiver_id])
-      if params[:title].empty?
-        title = "Przelew środków"
-      else
-        title = params[:title]
-      end
+      params[:title].empty? ? title = "Przelew środków" : title = params[:title]
       ActiveRecord::Base.transaction do
         OperationService.new(sender, receiver, params[:amount].to_i, title).transfer
       end
-      redirect_to root_path, notice: "Wysłano środki"
+      redirect_to :root, notice: "Wysłano środki"
     else
       flash[:notice] = "Nieprawidłowy token"
     end
