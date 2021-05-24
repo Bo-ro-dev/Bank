@@ -1,0 +1,2 @@
+2021-05-24 19:40:44.558 CEST [3688] FATAL:  database files are incompatible with server
+2021-05-24 19:40:44.558 CEST [3688] DETAIL:  The data directory was initialized by PostgreSQL version 12, which is not compatible with this version 13.3.
