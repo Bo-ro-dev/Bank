@@ -1,34 +1,48 @@
 <div class="container">
-  <div class="jumbotron">
+  <div class="jumbotron m-3">
     <div class="row border p-3 rounded border-4 border-secondary bg-light">
-      <div class="col-lg-6 col-md-6 col-sm-6 px-5">
+      <div class="col-lg-6 col-md-6 col-sm-6 px-5 ">
+        <div class="container-fluid ">
           <p class="fw-lighter fs-7 m-0">Numer konta:</p>
           <p class="m-0 fs-5 pt-0 pb-4"><%= @account.account_number %></p>
           <p class="fw-lighter m-0">Dostępne środki:</p>
           <p class=" fs-2 m-0"> <%= @account.balance %> zł</p>
+        </div>
       </div>
-      <div class="col-lg-6 col-md-6 col-sm-6">
-
+      <div class="col-lg-3 col-md-3 col-sm-3 align-self-center">
+        <div class="col-6">
+          <a class="btn btn-sm m-2 btn-outline-dark" style="width: 14em" href="/operations" role="button"><p class="fs-5 m-1">Wszystkie operacje</p></a>
+        </div>
+        <div class="col-6 ">
+          <a class="btn btn-sm m-2 btn-outline-dark" style="width: 14em" href="/requests" role="button"><p class="fs-5 m-1">Prośby o przelew</p>
+            <% if current_user.account.incoming_requests.count < 0 %>
+              <span class="badge bg-warning"> <%= current_user.account.incoming_requests.count %></span>
+            <% else%>
+            <% end %>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3 align-self-center">
+        <div class="col-6">
+          <a class="btn btn-dark btn-sm m-2" style="width: 16em" href="/operations" role="button"><p class="fs-5 m-1">Wszystkie operacje</p></a>
+        </div>
+        <div class="col-6  d-inline">
+          <a class="btn btn-dark btn-sm m-2" style="width: 16em" href="/requests" role="button"><p class="fs-5 m-1">Prośby o przelew
+            <% if current_user.account.incoming_requests.count > 9 %>
+              <span class="badge bg-warning"> <%= current_user.account.incoming_requests.count %>+</span>
+            <% elsif current_user.account.incoming_requests.count > 0 %>
+            <span class="badge bg-warning"> <%= current_user.account.incoming_requests.count %></span>
+            <% end %>
+            </p>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 
-    <br>
-
   <div class="row px-5">
-    <div class="col-6">
-      <a class="btn btn-dark btn-lg float-end" href="/operations" role="button">Wszystkie operacje</a>
-    </div>
-    <div class="col-6 ">
-      <a class="btn btn-dark btn-lg float-start d-inline" href="/requests" role="button">
-        Prośby o przelew
-        <% if current_user.account.incoming_requests.count < 0 %>
-        <span class="badge bg-warning"> <%= current_user.account.incoming_requests.count %></span>
-        <% else%>
-        <% end %>
 
-      </a>
-    </div>
+
   </div>
   <div class="px-5">
     <h4>Ostatnie operacje: </h1>

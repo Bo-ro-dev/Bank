@@ -1,30 +1,42 @@
 <h1>Dokończ tworzenie konta</h1>
 
 </br>
-<%= form_with(model: account, local: true, method: :post) do |form| %>
-  <div class="field">
-    <%= form.label :account_number,  "Numer telefonu: +48"%>
-    <%= form.text_field :account_number  %>
-    </br>
-    <%= form.label :first_name,  "Imię: "%>
-    <%= form.text_field :first_name  %>
-    </br>
-    <%= form.label :last_name,  "Nazwisko: "%>
-    <%= form.text_field :last_name  %>
+<div class="container border border-secondary border-2 rounded">
+
+    <%= form_with(model: account, local: true, method: :post, html: {:class => "row align-items-start border-2 "} ) do |form| %>
+      <div class="col m-5">
+        <div class="mb-3" style="width: 16em;">
+          <%= form.label :account_number,  "Numer telefonu: +48"%>
+          <%= form.text_field :account_number, class: "form-control"%>
+        </div>
+        <div class="mb-3" style="width: 16em;">
+          <%= form.label :first_name,  "Imię: "%>
+          <%= form.text_field :first_name, class: "form-control" %>
+        </div>
+        <div class="mb-3" style="width: 16em;">
+          <%= form.label :last_name,  "Nazwisko: "%>
+          <%= form.text_field :last_name, class: "form-control" %>
+        </div>
+        <div class="mb-3" style="width: 9em;">
+          <%= form.label :google_token,  "Token weryfikacji: "%>
+          <%= form.text_field :google_token, class: "form-control" %>
+        </div>
+        <div class="mb-3 mt-4">
+            <%= form.submit "Kontynuuj", class: "btn btn-dark"%>
+        </div>
+      </div>
+      <div class="col m-5">
+
+        <p>Zeskanuj aplikacją Google Authenticator lub wprowadź ręcznie:</p>
+        <%= image_tag(@qr) %>
+        <%= current_user.google_secret %>
+
+        <p>Przepisz token weryfikacji z aplikacji Googla Authenticator aby dokończyć tworzenie konta</p>
+
+      </div>
+
+
+    <% end %>
+
   </div>
-
-  <br>
- <p>Zeskanuj aplikacją Google Authenticator lub przepisz kod:</p>
-  <%= image_tag(@qr) %>
-  <%= current_user.google_secret %>
-
-  <p>Przepisz token weryfikacji z aplikacji Googla Authenticator aby dokończyć tworzenie konta</p>
-  <%= form.label :google_token,  "token: "%>
-  <%= form.text_field :google_token  %>
-  <br>
-  <br>
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-
-<% end %>
+</div>

@@ -7,6 +7,7 @@ class AccountsController < ApplicationController
   end
 
   def new
+    redirect_to root_path, notice: "Twoje konto zostało już zarejestrowane" unless current_user.account.nil?
     @account = Account.new
     @qr = current_user.google_qr_uri
   end
@@ -14,7 +15,7 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(account_params)
     @account.user = current_user
-    @account.balance = 0
+    @account.balance = 5000
     if current_user.google_authentic?(google_token)
       if @account.save
         redirect_to @account
@@ -30,6 +31,7 @@ class AccountsController < ApplicationController
       render action: "new"
     end
   end
+
 
   private
 
