@@ -11,14 +11,10 @@
       </div>
       <div class="col-lg-3 col-md-3 col-sm-3 align-self-center">
         <div class="col-6">
-          <a class="btn btn-sm m-2 btn-outline-dark" style="width: 14em" href="/operations" role="button"><p class="fs-5 m-1">Wszystkie operacje</p></a>
+          <a class="btn btn-sm m-2 btn-outline-dark" style="width: 14em" href="/operations/new" role="button"><p class="fs-5 m-1">Wyślij przelew</p></a>
         </div>
         <div class="col-6 ">
-          <a class="btn btn-sm m-2 btn-outline-dark" style="width: 14em" href="/requests" role="button"><p class="fs-5 m-1">Prośby o przelew</p>
-            <% if current_user.account.incoming_requests.count < 0 %>
-              <span class="badge bg-warning"> <%= current_user.account.incoming_requests.count %></span>
-            <% else%>
-            <% end %>
+          <a class="btn btn-sm m-2 btn-outline-dark" style="width: 14em" href="/requests/new" role="button"><p class="fs-5 m-1">Poproś o przelew</p>
           </a>
         </div>
       </div>
