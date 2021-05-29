@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_10_194310) do
+ActiveRecord::Schema.define(version: 2021_05_28_220451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,10 +30,11 @@ ActiveRecord::Schema.define(version: 2021_05_10_194310) do
     t.integer "sender_id"
     t.integer "receiver_id"
     t.integer "amount"
-    t.integer "balance_after_operation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "title"
+    t.integer "sender_balance_after_operation"
+    t.integer "receiver_balance_after_operation"
   end
 
   create_table "requests", force: :cascade do |t|

@@ -14,12 +14,8 @@
 #
 class User < ApplicationRecord
   acts_as_google_authenticated issuer: "Boro-Bank"
-
   after_create :set_google_secret
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-
+         :rememberable, :validatable
   has_one :account
-
-
 end

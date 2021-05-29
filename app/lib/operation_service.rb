@@ -19,7 +19,8 @@ class OperationService
       receiver: @receiver,
       amount:   @amount,
       title:    @title,
-      balance_after_operation: @receiver.balance
+      sender_balance_after_operation: @sender.balance,
+      receiver_balance_after_operation: @receiver.balance
     )
   end
 end

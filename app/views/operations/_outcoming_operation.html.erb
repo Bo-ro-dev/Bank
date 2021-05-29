@@ -9,7 +9,7 @@
             </div>
             <div class="col-md-1 col-5">
               <div><p class="fw-lighter">Saldo: </p> </div>
-              <div><%= operation.balance_after_operation %></div>
+              <div><%= operation.sender_balance_after_operation %></div>
             </div>
             <div class="col-md-5 col-6">
               <div><p class="fw-lighter">Tytuł: </p> </div>
@@ -17,7 +17,7 @@
             </div>
             <div class="col-md-1 col-6">
               <div><p class="fw-lighter">Kwota: </p></div>
-              <div><%= operation.amount %></div>
+              <div>-<%= operation.amount %></div>
             </div>
             <div class="col-md-1 col-1">
               <div class="dropdown float-end">

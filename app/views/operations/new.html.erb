@@ -1,17 +1,33 @@
-<div class="container">
-  <div class="border p-4 my-3 border-3 rounded border-primary">
-    <h3> Wyślij przelew: </h3>
-    <%= form_with url: "/operations", method: :post do |form| %>
-      <%= form.hidden_field :sender_id, value: @account.account_number %>
-      <%= form.label :receiver_id, "Numer konta odbiorcy:  +48"%>
-      <%= form.text_field :receiver_id, size: "9x1", value: @receiver_number %>
-      <%= form.label :amount, "kwota:"%>
-      <%= form.text_field :amount, size: "6x1", value: @amount %>
-      <%= form.label :title, "tytuł:"%>
-      <%= form.text_area :title, size: "9x1" %>
-      <%= form.label :google_token, "Token weryfikacji google: "%>
-      <%= form.text_area :google_token, size: "6x1" %>
-      <%= form.submit "Przelej pieniądze", data: { confirm: 'Potwierdź wykonanie przelewu' }%>
-    <% end%>
-  </div>
+<div class="container justify-content-center">
+    <div class="row d-inline-flex border p-4 my-3 border-3 rounded border-secondary " >
+      <%= form_with url: "/operations", method: :post, html: {:class => "col" } do |form| %>
+      <div class="card " style="border: none;">
+        <div class="card-head">
+          <h3> Wyślij przelew: </h3>
+        </div>
+        <div class="card-body">
+          <%= form.hidden_field :sender_id, value: @account.account_number %>
+          <div class="mb-3 " style="width: 16em;">
+            <%= form.label :receiver_id, "Numer konta odbiorcy:  +48"%>
+            <%= form.text_field :receiver_id, class: "form-control", value: @receiver_number %>
+          </div>
+          <div class="mb-3 " style="width: 16em;">
+            <%= form.label :amount, "kwota:"%>
+            <%= form.text_field :amount, class: "form-control", value: @amount %>
+          </div>
+          <div class="mb-3" style="width: 16em;">
+            <%= form.label :title, "tytuł:"%>
+            <%= form.text_area :title, class: "form-control" %>
+          </div>
+          <div class="mb-3" style="width: 12em;">
+            <%= form.label :google_token, "Token weryfikacji google: "%>
+            <%= form.text_field :google_token,  class: "form-control"%>
+          </div>
+          <div class="mb-3 mt-4">
+            <%= form.submit "Przelej pieniądze", data: { confirm: 'Potwierdź wykonanie przelewu' }, class: "btn btn-dark"%>
+          </div>
+        </div>
+      </div>
+      <% end%>
+    </div>
 </div>

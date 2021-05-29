@@ -19,7 +19,7 @@ class OperationsController < ApplicationController
 
   def index
     search = params[:search]
-    @operations = current_user.account.operations.includes(:sender, :receiver)
+    @operations = current_user.account.operations.includes(:sender, :receiver).order(created_at: :desc)
   end
 
    def new

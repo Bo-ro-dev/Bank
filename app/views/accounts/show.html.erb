@@ -1,24 +1,24 @@
 <div class="container">
   <div class="jumbotron m-3">
     <div class="row border p-3 rounded border-4 border-secondary bg-light">
-      <div class="col-lg-6 col-md-6 col-sm-6 px-5 ">
-        <div class="container-fluid ">
+      <div class="col-lg-4 col-md-12  px-5 ">
+
           <p class="fw-lighter fs-7 m-0">Numer konta:</p>
           <p class="m-0 fs-5 pt-0 pb-4"><%= @account.account_number %></p>
           <p class="fw-lighter m-0">Dostępne środki:</p>
           <p class=" fs-2 m-0"> <%= @account.balance %> zł</p>
-        </div>
+
       </div>
-      <div class="col-lg-3 col-md-3 col-sm-3 align-self-center">
-        <div class="col-6">
-          <a class="btn btn-sm m-2 btn-outline-dark" style="width: 14em" href="/operations/new" role="button"><p class="fs-5 m-1">Wyślij przelew</p></a>
+      <div class="col-lg-4 col-md- col-sm-6 ">
+        <div class="col-6 ">
+          <a class="btn btn-sm m-2 btn-outline-dark" style="width: 16em" href="/operations/new" role="button"><p class="fs-5 m-1">Wyślij przelew</p></a>
         </div>
         <div class="col-6 ">
-          <a class="btn btn-sm m-2 btn-outline-dark" style="width: 14em" href="/requests/new" role="button"><p class="fs-5 m-1">Poproś o przelew</p>
+          <a class="btn btn-sm m-2 btn-outline-dark" style="width: 16em" href="/requests/new" role="button"><p class="fs-5 m-1">Poproś o przelew</p>
           </a>
         </div>
       </div>
-      <div class="col-lg-3 col-md-3 col-sm-3 align-self-center">
+      <div class="col-lg-4 col-md-3 col-sm-6 align-self-center">
         <div class="col-6">
           <a class="btn btn-dark btn-sm m-2" style="width: 16em" href="/operations" role="button"><p class="fs-5 m-1">Wszystkie operacje</p></a>
         </div>
@@ -62,11 +62,11 @@
             </div>
             <div class="col-md-2 col-6">
               <div><p class="fw-lighter">Saldo: </p> </div>
-              <div><%= operation.balance_after_operation %></div>
+              <div><%= operation.sender_balance_after_operation %></div>
             </div>
             <div class="col-md-1 col-6">
               <div><p class="fw-lighter">Kwota: </p></div>
-              <div><%= operation.amount %></div>
+              <div>-<%= operation.amount %></div>
             </div>
           </div>
       <% else %>
@@ -86,7 +86,7 @@
           </div>
           <div class="col-md-2 col-6">
             <div><p class="fw-lighter">Saldo: </p> </div>
-            <div><%= operation.balance_after_operation %></div>
+            <div><%= operation.receiver_balance_after_operation %></div>
           </div>
           <div class="col-md-1 col-6">
             <div><p class="fw-lighter">Kwota: </p> </div>

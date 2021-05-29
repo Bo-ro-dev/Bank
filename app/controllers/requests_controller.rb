@@ -10,13 +10,17 @@ class RequestsController < ApplicationController
   end
 
   def create
-    RequestService.create_request(
-      requester: current_user.account,
-      target: Account.find_by!(account_number: request_params[:target_id].to_i),
-      amount: request_params[:amount],
-      name: request_params[:name]
-    )
-    redirect_to root_path, notice: "Wysłano prośbę o przelew"
+    if current_user.google_authentic?(params[:google_token].to_s)
+      RequestService.create_request(
+        requester: current_user.account,
+        target: Account.find_by!(account_number: params[:target_id].to_i),
+        amount: request_params[:amount],
+        name: request_params[:name]
+      )
+      redirect_to root_path, notice: "Wysłano prośbę o przelew"
+    else
+      flash[:notice] = "Nieprawidłowy token"
+    end
   end
 
   def destroy
@@ -44,6 +48,6 @@ class RequestsController < ApplicationController
   private
 
   def request_params
-    params[:request]
+    params
   end
 end
