@@ -1,10 +1,10 @@
 <h1>Dokończ tworzenie konta</h1>
 
 </br>
-<div class="container border border-secondary border-2 rounded">
-
-    <%= form_with(model: account, local: true, method: :post, html: {:class => "row align-items-start border-2 "} ) do |form| %>
-      <div class="col m-5">
+<div class="container  border border-secondary border-2 rounded">
+  <div class="row">
+    <%= form_with(model: account, local: true, method: :post, html: {:class => "row  d-inline-flex "} ) do |form| %>
+      <div class="col p-5">
         <div class="mb-3" style="width: 16em;">
           <%= form.label :account_number,  "Numer telefonu: +48"%>
           <%= form.text_field :account_number, class: "form-control"%>
@@ -25,7 +25,7 @@
             <%= form.submit "Kontynuuj", class: "btn btn-dark"%>
         </div>
       </div>
-      <div class="col m-5">
+      <div class="col p-5">
 
         <p>Zeskanuj aplikacją Google Authenticator lub wprowadź ręcznie:</p>
         <%= image_tag(@qr) %>
@@ -38,5 +38,5 @@
 
     <% end %>
 
-
+  </div>
 </div>
